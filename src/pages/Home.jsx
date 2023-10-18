@@ -6,7 +6,7 @@ import { faCartShopping, faHeart,faTag } from "@fortawesome/free-solid-svg-icons
 import useFetch from "../hooks/useFetch";
 export default function Home() {
   const items = useFetch("https://dummyjson.com/products");
-  console.log(items);
+  // console.log(items);
   return (
     <div style={{ width: "100vw", minHeight: "100vh" }} className="p-5">
       <Row>
@@ -32,7 +32,7 @@ export default function Home() {
         </div>
 
         <div className="discount-tag">
-        <FontAwesomeIcon icon={faTag} size="lg" style={{color: "black",}} />
+        <FontAwesomeIcon icon={faTag} size="lg" style={{color: "black"}} />
         {item?.discountPercentage}% off
         </div>
       </div>
