@@ -1,33 +1,66 @@
-import React from 'react'
-import { Row,Col, Container } from 'react-bootstrap'
-import { Card,Button } from 'react-bootstrap'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCartShopping,faHeart } from '@fortawesome/free-solid-svg-icons'
+import React from "react";
+import { Row, Col } from "react-bootstrap";
+import { Card, Button } from "react-bootstrap";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCartShopping, faHeart,faTag } from "@fortawesome/free-solid-svg-icons";
+import useFetch from "../hooks/useFetch";
 export default function Home() {
+  const items = useFetch("https://dummyjson.com/products");
+  console.log(items);
   return (
-    <div style={{width:'100vw',minHeight:'100vh'} } className='p-5'>
-    <Row>
-<Col>
-<Card style={{ width: '18rem' }}>
-      <div className='card-parent'><Card.Img  variant="top" src="https://assets.adidas.com/images/w_600,f_auto,q_auto/f9d52817f7524d3fb442af3b01717dfa_9366/Runfalcon_3.0_Shoes_Black_HQ3790_01_standard.jpg" />
-      
-      <div className='wishlist-icon'><FontAwesomeIcon icon={faHeart} size="lg" style={{color: "#ff0000",}} /></div>
+    <div style={{ width: "100vw", minHeight: "100vh" }} className="p-5">
+      <Row>
+ 
+ {items?.length>0?(
+  items?.map((item,index)=> (
+    <Col key={index} className="mb-5" sm={12} md={6} lg={4} xl={3}>
+    <Card style={{ width: "18rem",height:'27rem' }}>
+      <div className="card-parent ">
+        <Card.Img
+        style={{width:"300px",height:"200px"}}
+        className="img-fluid"
+          variant="top"
+          src={item?.thumbnail}
+        />
+
+        <div className="wishlist-icon">
+          <FontAwesomeIcon
+            icon={faHeart}
+            size="lg"
+            style={{ color: "#ff0000" }}
+          />
+        </div>
+
+        <div className="discount-tag">
+        <FontAwesomeIcon icon={faTag} size="lg" style={{color: "#fbff00",}} />
+        {item?.discountPercentage} off
+        </div>
       </div>
+
       <Card.Body>
-        <Card.Title>Card Title</Card.Title>
+        <Card.Title>{item?.title}</Card.Title>
+        <p><b>$</b>{item?.price}</p>
         <Card.Text>
-          Some quick example text to build on the card title and make up the
-          bulk of the card's content.<p></p>
+
+          <p className="text-truncate">{item?.description}</p>
         </Card.Text>
-        <Button variant="primary d-flex gap-2"><FontAwesomeIcon icon={faCartShopping} size='lg'  style={{color: "white"}} />  Add to Cart</Button>
+        <Button variant="primary d-flex gap-2">
+          <FontAwesomeIcon
+            icon={faCartShopping}
+            size="lg"
+            style={{ color: "white" }}
+          />{" "}
+          Add to Cart
+        </Button>
       </Card.Body>
     </Card>
-
-    
-</Col>
-
-    </Row>
-    
-     </div>
-  )
+  </Col>
+  ))
+ )
+ : <div>No products</div>
+}
+ 
+      </Row>
+    </div>
+  );
 }
