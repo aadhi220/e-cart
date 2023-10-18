@@ -14,3 +14,17 @@
   align-items: center;
   border-radius: 50rem;
 }
+
+.discount-tag {
+  position: absolute;
+  bottom: 1rem;
+  left: 1rem;
+  background-color: aliceblue;
+  /* width: 30px;
+  height: 30px; */
+  padding: 3px 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50rem;
+}

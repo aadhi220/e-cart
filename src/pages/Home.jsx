@@ -32,8 +32,8 @@ export default function Home() {
         </div>
 
         <div className="discount-tag">
-        <FontAwesomeIcon icon={faTag} size="lg" style={{color: "#fbff00",}} />
-        {item?.discountPercentage} off
+        <FontAwesomeIcon icon={faTag} size="lg" style={{color: "black",}} />
+        {item?.discountPercentage}% off
         </div>
       </div>
 

@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCartShopping,faHeart } from '@fortawesome/free-solid-svg-icons'
 export default function Header() {
   return (
-    <>   <Navbar bg="primary" data-bs-theme="dark">
+    <>   <Navbar bg="primary" style={{position:'fixed',width:"100%",zIndex:'99'}} data-bs-theme="dark">
     <Container>
       <Link to={"/"} style={{textDecoration:'none',overflow:'hidden'}} ><Navbar.Brand >E-cart</Navbar.Brand></Link>
       <Nav className=" d-flex gap-3">         
