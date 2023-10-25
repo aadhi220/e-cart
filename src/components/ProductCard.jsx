@@ -1,6 +1,6 @@
 import React from 'react'
 import { Col,Card } from 'react-bootstrap'
-
+import { addToCart } from '../redux/slices/cartSlice';
 
 import {  Button } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -30,6 +30,7 @@ export default function ({item,index,dispatch}) {
             style={{ color: "#ff0000" }}
           />
         </button>
+        
 
         <div className="discount-tag">
         <FontAwesomeIcon icon={faTag} size="lg" style={{color: "black"}} />
@@ -45,7 +46,7 @@ export default function ({item,index,dispatch}) {
 
           <p className="text-truncate">{item?.description}</p>
         </Card.Text>
-        <Button variant="primary d-flex gap-2">
+        <Button onClick={()=>dispatch(addToCart(item))} variant="primary d-flex gap-2">
           <FontAwesomeIcon
             icon={faCartShopping}
             size="lg"

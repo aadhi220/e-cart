@@ -6,11 +6,15 @@ import { faCartShopping, faHeart,faTag,faStar, faTrash } from "@fortawesome/free
 import StarRate from "../components/StarRate";
 import { Link } from 'react-router-dom';
 import { removefromWishlist } from '../redux/slices/wishlistSlice';
+import { addToCart } from '../redux/slices/cartSlice'
 export default function Wishlist() {
 
   const items = useSelector((state)=>state.wishlistReducer)
   const dispatch =useDispatch();
-  
+  const handleWishlistCart = (item)=>{
+    dispatch(addToCart(item))
+    dispatch(removefromWishlist(item.id))
+  }
   return (
     
       <div style={{ width: "100vw", minHeight: "100vh" }} className="p-5">
@@ -45,7 +49,7 @@ export default function Wishlist() {
           <p className="text-truncate">{item?.description}</p>
         </Card.Text>
        <div className='d-flex justify-content-between'>
-          <Button variant="primary d-flex gap-2">
+          <Button onClick={()=>handleWishlistCart(item)} variant="primary d-flex gap-2">
             <FontAwesomeIcon
               icon={faCartShopping}
               size="lg"

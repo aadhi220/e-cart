@@ -6,6 +6,7 @@ import { faCartShopping,faHeart } from '@fortawesome/free-solid-svg-icons'
 import { useSelector } from 'react-redux'
 export default function Header() {
   const wishlist = useSelector((state)=>state.wishlistReducer)
+  const cart = useSelector((state)=>state.cartReducer)
   return (
     <>   <Navbar bg="primary" style={{position:'fixed',width:"100%",zIndex:'99'}} data-bs-theme="dark">
     <Container>
@@ -13,7 +14,7 @@ export default function Header() {
       <Nav className=" d-flex gap-3">         
      {/* <Nav.Link ><Link to={"/"} style={{textDecoration:'none',color:'white'}}> Home  </Link></Nav.Link> */}
         <button className='btn ' ><Link to={"/wishlist"} style={{textDecoration:'none',color:'white'}}><FontAwesomeIcon icon={faHeart} size="lg" style={{color: "#ff0000",}} /> Wishlist (<span >{wishlist.length}</span>) </Link></button>
-      <button className='btn' ><Link to={"/cart"} style={{textDecoration:'none',color:'white'}}> <FontAwesomeIcon icon={faCartShopping} size='lg'  style={{color: "white"}} /> <sup style={{backgroundColor:'red',padding:'1px'}} className='rounded'>10</sup>{""} Cart </Link></button>
+      <button className='btn' ><Link to={"/cart"} style={{textDecoration:'none',color:'white'}}> <FontAwesomeIcon icon={faCartShopping} size='lg'  style={{color: "white"}} /> <sup style={{backgroundColor:'red',padding:'1px'}} className='rounded'>{cart.length}</sup>{""} Cart </Link></button>
       </Nav>
     </Container>
   </Navbar></>
